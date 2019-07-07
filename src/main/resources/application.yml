@@ -1,0 +1,40 @@
+server: 
+  port: 7001
+logging: 
+  level: 
+    root: info
+    com: # 根据本地包修改日志级别
+      ptw: 
+        mapper: debug
+spring: 
+  profiles: 
+    active: dev
+  datasource: 
+      dynamic: 
+        primary: mysql #设置默认的数据源或者数据源组,默认值即为master
+        datasource:  
+          mysql: 
+            username: root
+            password: mysqladmin
+            driver-class-name: com.mysql.jdbc.Driver
+            url: jdbc:mysql://10.10.130.16:3306/mini_qa
+          sqlserver: #DataSourceEnum的值
+            username: realtour
+            password: ENC(VHSycrGLNcB7FexErFJNr006JGcDsL/P)
+            driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+            url: jdbc:sqlserver://172.16.2.239:1433;Databasename=RealTourR8
+jasypt:
+  encryptor:
+    password: EbfYkitulv73I2p0mXI50JMXoaxZTKJ7
+---
+spring: 
+  profiles: dev #开发环境
+system-params: 
+  imagePath: E://image//
+  filePath: E://
+---
+spring: 
+  profiles: release #开发环境
+system-params: 
+  imagePath: /home/image/
+  filePath: /home/file/

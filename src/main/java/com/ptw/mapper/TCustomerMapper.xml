@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ptw.mapper.TCustomerMapper">
+
+    <!-- 开启二级缓存
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/> -->
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ptw.pojo.TCustomer">
+        <id column="tourist_id" property="touristId" />
+        <result column="team_no" property="teamNo" />
+        <result column="tourist_name" property="touristName" />
+        <result column="phone_num" property="phoneNum" />
+        <result column="response" property="response" />
+        <result column="start_time" property="startTime" />
+        <result column="end_time" property="endTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        tourist_id AS touristId, team_no AS teamNo, tourist_name AS touristName,phone_num AS phoneNum,response AS response, end_time AS endTime
+    </sql>
+    <!-- <resultMap type="com.ptw.pojo.TCustomer" id="customer_subject" extends="BaseResultMap">
+    	<association property="team" javaType="com.ptw.pojo.TTeam" >
+    		<id column="line_name" property="lineName" />
+	        <result column="team_no" property="teamNo" />
+	        <result column="go_time" property="goTime" />
+	        <result column="back_time" property="backTime" />
+	        <result column="TempletID" property="TempletID" />
+	        <result column="team_leader" property="teamLeader" />
+	        <result column="ground_connection" property="groundConnection" />
+	        <result column="person_number" property="personNumber" />
+	        <result column="driver_name" property="driverName" />
+	        <result column="nationality" property="nationality" />
+	        <result column="tel_phone" property="telPhone" />
+	        <result column="car_type" property="carType" />
+	        <result column="Feedback_num" property="feedbackNum" />
+	        <result column="qr_image_path" property="qr_image_path" />
+    	</association>
+    	<association property="templet" javaType="com.ptw.pojo.TTemplet" >
+    		<id column="templet_id" property="templetId" />
+	        <result column="templet_name" property="templetName" />
+	        <result column="image_url" property="imageUrl" />
+	        <result column="title_count" property="titleCount" />
+	        <result column="ref_count" property="refCount" />
+	        <result column="title" property="title" />
+	        <result column="release_status" property="releaseStatus" />
+	        <result column="welcome_speech" property="welcomeSpeech" />
+    	</association>
+    	<collection property="subjects" ofType="com.ptw.pojo.TSubject">
+    		<id column="subject_id" property="subjectId" />
+	        <result column="subject_name" property="subjectName" />
+	        <result column="category_name" property="categoryName" />
+	        <result column="category_num" property="categoryNum" />
+	        <result column="order_num" property="orderNum" />
+	        <result column="subject_type" property="subjectType" />
+	        <result column="choose_JSON" property="chooseJson" />
+	        <result column="required" property="required" />
+	        <result column="templet_id" property="templetId" />
+    	</collection>
+    </resultMap> -->
+    
+    <!-- <resultMap type="com.ptw.pojo.TCustomer" id="customer_response" extends="BaseResultMap">
+    	<association property="responses" javaType="com.ptw.pojo.TCustomerResponse" >
+    		<id column="response_id" property="responseId" />
+	        <result column="response_text" property="responseText" />
+	        <result column="create_time" property="createTime" />
+	        <result column="update_time" property="updateTime" />
+	        <result column="all_touristID" property="allTouristID" />
+	        <result column="all_touristName" property="allTouristName" />
+	        <result column="team_no" property="teamNo" />
+    	</association>
+    </resultMap> -->
+    
+    <!-- <select id="getResponses" parameterType="string" resultMap="customer_response">
+    	SELECT * FROM t_customer c 
+    	LEFT JOIN t_customer_response t ON c.`response`=t.`response_id` 
+    	WHERE c.team_no=#{teamNo}
+    </select> -->
+</mapper>
